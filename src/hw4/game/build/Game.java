@@ -13,3 +13,9 @@ public class Game{
 		
 	}
 }
+
+
+//so we have to create a 3d array that represents the gameBoard
+//we should do this as random
+//the exit will always be on the top left corner
+//
