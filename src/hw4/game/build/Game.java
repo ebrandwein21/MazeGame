@@ -1,6 +1,10 @@
 package hw4.game.build;
+import hw4.maze.build.Grid;
+
 
 public class Game{
+	
+	private Grid grid;
 	
 	//methods are tentative and may need parameters, different access levels etc 
 	public void setUpGame()
@@ -12,6 +16,25 @@ public class Game{
 	{
 		
 	}
+	
+	public Grid getGrid()
+	{
+		return grid;
+	}
+	
+	public void setGrid(Grid grid)
+	{
+		this.grid = grid;
+	}
+	
+	
+	
+	public void createRandomGrid()
+	{
+		
+	}
+	
+	
 }
 
 
