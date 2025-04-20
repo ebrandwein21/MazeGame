@@ -35,12 +35,48 @@ public class Game{
 	}
 	
 	
-	
+	//Need to actually set these later 
 	public Grid createRandomGrid(int size)
 	{
 	    ArrayList<Row> rows = new ArrayList<>();
 	
 		int[][] grid = new int[size][size];
+		createRandomCell(1);
+		for(int i = 0; i < size; i++) {
+			for(int j = 1; j < size; j++) {
+				//Top Edge
+				if(i == 0 && j < (size - 1)) {
+					createRandomCell(5);
+				}
+				//Top Right Corner
+				else if(i == 0 && j == (size - 1)) {
+					createRandomCell(2);
+				}
+				//Right Edge
+				else if(i < (size - 1) && j == (size - 1)){
+					createRandomCell(6);
+				}
+				//Bottom Right Corner
+				else if(i == (size - 1) && j == (size - 1)){
+					createRandomCell(3);
+				}
+				//Bottom Edge
+				else if(i == (size - 1) && j < (size - 1)){
+					createRandomCell(6);
+				}
+				//Bottom Left Corner
+				else if(i == (size - 1) && j == 0){
+					createRandomCell(6);
+				}
+				//Left Edge
+				else if(i < (size - 1) && j == 0) {
+					createRandomCell(8);
+				}
+				else {
+					createRandomCell(0);
+				}
+			}
+		}
 		
 		
 		return new Grid(rows);
