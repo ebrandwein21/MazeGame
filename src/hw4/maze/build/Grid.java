@@ -19,4 +19,9 @@ public class Grid{
 	public void setRows(ArrayList<Row> rows) {
 		this.rows = rows;
 	}
+
+	@Override
+	public String toString() {
+		return "Grid [rows=" + rows + "]";
+	}
 }

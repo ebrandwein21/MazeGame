@@ -19,5 +19,11 @@ public class Row{
 	public void setCells(ArrayList<Cell> cells) {
 		this.cells = cells;
 	}
+
+	@Override
+	public String toString() {
+		return "Row [cells=" + cells + "]";
+	}
+	
 	
 }
