@@ -16,7 +16,7 @@ public class Row{
 		return cells;
 	}
 	
-	public void setBook(ArrayList<Cell> cells) {
+	public void setCells(ArrayList<Cell> cells) {
 		this.cells = cells;
 	}
 	
