@@ -31,7 +31,7 @@ class GridTest {
 		
 		Cell cell02 = new Cell(CellComponents.WALL, CellComponents.WALL,
 				CellComponents.WALL, CellComponents.APERTURE);
-		
+
 		Cell cell10 = new Cell(CellComponents.WALL, CellComponents.WALL,
 				CellComponents.APERTURE, CellComponents.APERTURE);
 		
