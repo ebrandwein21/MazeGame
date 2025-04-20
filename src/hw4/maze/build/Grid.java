@@ -16,7 +16,7 @@ public class Grid{
 		return rows;
 	}
 	
-	public void setBook(ArrayList<Row> rows) {
+	public void setRows(ArrayList<Row> rows) {
 		this.rows = rows;
 	}
 }
