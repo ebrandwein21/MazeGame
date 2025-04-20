@@ -28,6 +28,11 @@ public class Game{
 		this.size = size;
 	}
 	
+	public Game(Grid grid) {
+		super();
+		this.grid = grid;
+	}
+
 	public void setUpGame(int size)
 	{
 		this.grid = createRandomGrid(size);
