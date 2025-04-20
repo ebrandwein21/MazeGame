@@ -7,17 +7,20 @@ public class Player{
 	Row row;
 	Cell cell;
 	
-	public void getCurrentRow()
-	{
-		
-	}
 	public Player(Row row, Cell cell) {
 		super();
 		this.row = row;
 		this.cell = cell;
 	}
-	public void getCurrentCell()
-	{
-		
+	
+	public Row getCurrentRow() {
+		return row;
 	}
+
+
+	public Cell getCurrentCell() {
+		return cell;
+	}
+
+	
 }
