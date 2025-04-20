@@ -12,7 +12,7 @@ public enum CellComponents{
 
     public static CellComponents randomComponent()  {
         CellComponents[] cellComponents = values();
-        return cellComponents[RANDOM.nextInt(cellComponents.length)];
+        return cellComponents[RANDOM.nextInt(2)];
     }
    
 	}

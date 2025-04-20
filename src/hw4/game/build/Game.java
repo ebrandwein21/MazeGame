@@ -1,4 +1,6 @@
 package hw4.game.build;
+import hw4.maze.build.Cell;
+import hw4.maze.build.CellComponents;
 import hw4.maze.build.Grid;
 import hw4.maze.build.Row;
 
@@ -44,11 +46,74 @@ public class Game{
 		return new Grid(rows);
 	}
 	
-public Cell createRandomCell(int location) {	
-		
+	//Sets random cell depending on its location in the grid
+	public Cell createRandomCell(int location) {
+		Cell cell = new Cell(null, null, null, null);
+		//Middle of Grid
+		if(location == 0) {
+			cell.setUp(CellComponents.randomComponent());
+			cell.setDown(CellComponents.randomComponent());
+			cell.setLeft(CellComponents.randomComponent());
+			cell.setRight(CellComponents.randomComponent());
+		}
+		//Top Left Corner
+		else if(location == 1) {
+			cell.setUp(CellComponents.randomComponent());
+			cell.setDown(CellComponents.randomComponent());
+			cell.setLeft(CellComponents.WALL);
+			cell.setRight(CellComponents.randomComponent());
+		}
+		//Top Right Corner
+		else if(location == 2) {
+			cell.setUp(CellComponents.WALL);
+			cell.setDown(CellComponents.randomComponent());
+			cell.setLeft(CellComponents.randomComponent());
+			cell.setRight(CellComponents.WALL);
+		}
+		//Bottom Right Corner
+		else if(location == 3) {
+			cell.setUp(CellComponents.randomComponent());
+			cell.setDown(CellComponents.WALL);
+			cell.setLeft(CellComponents.randomComponent());
+			cell.setRight(CellComponents.WALL);
+		}
+		//Bottom Left Corner
+		else if(location == 4) {
+			cell.setUp(CellComponents.randomComponent());
+			cell.setDown(CellComponents.WALL);
+			cell.setLeft(CellComponents.WALL);
+			cell.setRight(CellComponents.randomComponent());
+		}
+		//Top Edge
+		else if(location == 5) {
+			cell.setUp(CellComponents.WALL);
+			cell.setDown(CellComponents.randomComponent());
+			cell.setLeft(CellComponents.randomComponent());
+			cell.setRight(CellComponents.randomComponent());
+		}
+		//Right Edge
+		else if(location == 6) {
+			cell.setUp(CellComponents.randomComponent());
+			cell.setDown(CellComponents.randomComponent());
+			cell.setLeft(CellComponents.randomComponent());
+			cell.setRight(CellComponents.WALL);
+		}
+		//Bottom Edge
+		else if(location == 7) {
+			cell.setUp(CellComponents.randomComponent());
+			cell.setDown(CellComponents.WALL);
+			cell.setLeft(CellComponents.randomComponent());
+			cell.setRight(CellComponents.randomComponent());
+		}
+		//Left Edge
+		else if(location == 8) {
+			cell.setUp(CellComponents.randomComponent());
+			cell.setDown(CellComponents.randomComponent());
+			cell.setLeft(CellComponents.WALL);
+			cell.setRight(CellComponents.randomComponent());
+		}
 		return cell;
 	}
-	
 	
 }
 
