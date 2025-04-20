@@ -4,14 +4,17 @@ public class Cell{
 	
 	//methods are tentative and may need parameters, different access levels etc 
 	
-	CellComponents cellComponents;
+	private CellComponents up;
+	private CellComponents down;
+	private CellComponents left;
+	private CellComponents right;
 	
-	public Cell(CellComponents cellComponents, CellComponents cellComponents2,CellComponents cellComponents3, CellComponents cellComponents4 )
+	public Cell(CellComponents up, CellComponents down,CellComponents left, CellComponents right )
 	{
-		this.cellComponents = cellComponents; 
-		this.cellComponents = cellComponents2;
-		this.cellComponents = cellComponents3;
-		this.cellComponents = cellComponents4;
+		this.up = up; 
+		this.down = down;
+		this.left = left;
+		this.right = right;
 	}
 	
 	public void assertsEquals()
@@ -19,43 +22,48 @@ public class Cell{
 		
 	}
 	
-	public void setUp()
+	public CellComponents getUp()
 	{
-		
+		return up;
 	}
 	
-	public void getUp()
+	public void setUp(CellComponents up)
 	{
-		
+		this.up = up;
 	}
 	
-	public void setDown()
+	public CellComponents getDown()
 	{
-		
+		return down;
+	}
+
+	
+	public void setDown(CellComponents down)
+	{
+		this.down = down;
 	}
 	
-	public void getDown()
+	public CellComponents getLeft()
 	{
+		return left;
+	}
+ 
 		
+	public void setLeft(CellComponents left)
+	{
+		this.left = left;
 	}
 	
-	public void setLeft()
+	
+	public CellComponents getRight()
 	{
-		
+		return right;
 	}
 	
-	public void getLeft()
+	public void setRight(CellComponents right)
 	{
-		
+		this.right = right;
 	}
 	
-	public void setRight()
-	{
-		
-	}
 	
-	public void getRight()
-	{
-		
-	}
 }
