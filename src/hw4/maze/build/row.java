@@ -4,12 +4,20 @@ import java.util.ArrayList;
 
 public class Row{
 	
-	private static ArrayList<Cell> cellList;
+	private ArrayList<Cell> cells;
 
- public Row()
+ public Row(ArrayList<Cell> cells)
  
  {
-	 cellList = new ArrayList<Cell>();
+	 this.cells = cells;
  }
+ 
+ public ArrayList<Cell> getCells() {
+		return cells;
+	}
+	
+	public void setBook(ArrayList<Cell> cells) {
+		this.cells = cells;
+	}
 	
 }
