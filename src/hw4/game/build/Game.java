@@ -3,6 +3,8 @@ import hw4.maze.build.Cell;
 import hw4.maze.build.CellComponents;
 import hw4.maze.build.Grid;
 import hw4.maze.build.Row;
+import hw4.player.build.Movement;
+import hw4.player.build.Player;
 
 import java.util.Random;
 import java.util.ArrayList;
@@ -12,8 +14,20 @@ public class Game{
 	
 	private Grid grid;
 	private Random rand = new Random(); 
-	
+	private int size;
 	//methods are tentative and may need parameters, different access levels etc 
+	
+	
+	public boolean play(Movement m, Player p) {
+		
+		return true;
+	}
+	
+	public Game(int size) {
+		super();
+		this.size = size;
+	}
+	
 	public void setUpGame(int size)
 	{
 		this.grid = createRandomGrid(size);
