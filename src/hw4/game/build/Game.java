@@ -44,6 +44,11 @@ public class Game{
 		return new Grid(rows);
 	}
 	
+public Cell createRandomCell(int location) {	
+		
+		return cell;
+	}
+	
 	
 }
 
