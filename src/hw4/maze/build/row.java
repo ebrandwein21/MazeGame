@@ -6,5 +6,10 @@ public class Row{
 	
 	private static ArrayList<Cell> cellList;
 
+ public Row()
+ 
+ {
+	 cellList = new ArrayList<Cell>();
+ }
 	
 }
