@@ -24,7 +24,17 @@ public class Cell{
 		
 	}
 	
+	public void getUp()
+	{
+		
+	}
+	
 	public void setDown()
+	{
+		
+	}
+	
+	public void getDown()
 	{
 		
 	}
@@ -34,7 +44,17 @@ public class Cell{
 		
 	}
 	
+	public void getLeft()
+	{
+		
+	}
+	
 	public void setRight()
+	{
+		
+	}
+	
+	public void getRight()
 	{
 		
 	}
