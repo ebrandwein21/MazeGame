@@ -140,7 +140,7 @@ class CellTest {
 				CellComponents.APERTURE, 
 				CellComponents.WALL);
 		cell.setRight(null);
-		assertEquals(CellComponents.WALL, cell.getRight());
+		assertEquals(CellComponents.WALL, cell.getRight());  
 	}
 	
 	
