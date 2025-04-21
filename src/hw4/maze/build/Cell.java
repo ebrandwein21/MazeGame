@@ -37,7 +37,7 @@ public class Cell{
 		}
 		else
 		{
-			this.left = CellComponents.WALL;
+			left = CellComponents.WALL;
 		}
 	}
 	
@@ -54,7 +54,7 @@ public class Cell{
 		}
 		else
 		{
-			this.right = CellComponents.WALL;
+			right = CellComponents.WALL;
 		}
 	}
 
@@ -73,7 +73,7 @@ public class Cell{
 		}	
 		else
 		{
-			this.up = CellComponents.WALL;
+			up = CellComponents.WALL;
 		}
 	}
 	
@@ -91,7 +91,7 @@ public class Cell{
 		}	
 		else
 		{
-			this.down = CellComponents.WALL;
+			down = CellComponents.WALL;
 		}
 	}
 	
