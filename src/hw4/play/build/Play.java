@@ -8,19 +8,75 @@ import hw4.maze.build.Row;
 import hw4.player.build.Movement;
 import hw4.player.build.Player;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
+
 public class Play
     {
   
-	
+	  Scanner mazeScanner = new Scanner(System.in);
+
 public static void main(String[] args) {
+	   
 	
-	
-	    //draw the grid 
-	   //have the user play the game, "type 1 to play the game"
+	  int size = 6; //change to over 7 or under 3 
 	  
+	  Game game = new Game(size);
+	  game.setUpGame(size);
 	
-    }
-	
+	  game.getGrid();
+	  
+}  
+	  public Movement getPlayerMovement()
+	  {
+		  System.out.println("press 1 to go up");
+		  System.out.println("press 2 to go down");
+		  System.out.println("press 3 to go left");
+		  System.out.println("press 4 to go right");
+		 
+		  String direction = mazeScanner.nextLine();
+		  
+		  if(direction.equals("1"))
+		  {
+			  return Movement.UP;
+		  }
+		  if(direction.equals("2"))
+		  {
+			  return Movement.DOWN;
+		  }
+		  if(direction.equals("3"))
+		  {
+			  return Movement.LEFT;
+		  }
+		  if(direction.equals("4"))
+		  {
+		  	  return Movement.RIGHT;
+		  }
+		   return Movement.NULL;
+	  }
+	  
+	  public void printBoard(Grid grid, Player player)
+	  {
+		  for(Row rows : grid.getRows())
+		  {
+			  for (Cell cells : rows.getCells())
+			  {
+				  if(cells == player.getCurrentCell())
+				  {
+					  System.out.println("A");
+				  }
+				  if(cells.getLeft() == CellComponents.EXIT && cells.getRight() == CellComponents.EXIT && cells.getUp() == CellComponents.EXIT && cells.getDown() == CellComponents.EXIT)
+				  {
+					  System.out.println("E");
+				  }
+				  else
+				  {
+					  System.out.println("S");
+				  }
+			  }
+		  }
+	  }
 }
 
 
