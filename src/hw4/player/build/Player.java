@@ -4,23 +4,32 @@ import hw4.maze.build.Cell;
 import hw4.maze.build.Row;
 
 public class Player{
-	Row row;
-	Cell cell;
+	Cell currentCell;
+	Row currentRow;
+	
 	
 	public Player(Row row, Cell cell) {
 		super();
-		this.row = row;
-		this.cell = cell;
+		this.currentRow = row;
+		this.currentCell = cell;
 	}
 	
 	public Row getCurrentRow() {
-		return row;
+		return currentRow;
 	}
 
 
 	public Cell getCurrentCell() {
-		return cell;
+		return currentCell;
 	}
+
+	@Override
+	public String toString() {
+		return "Player [currentCell=" + currentCell + ", currentRow=" + currentRow + "]";
+	}
+
+	
+	
 
 	
 }
