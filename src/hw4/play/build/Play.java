@@ -14,20 +14,27 @@ import java.util.Scanner;
 
 public class Play
     {
-  
-	  Scanner mazeScanner = new Scanner(System.in);
+	   private static Game game;
+	   private static Grid grid;
+	     
+	   Scanner mazeScanner = new Scanner(System.in);
 
-public static void main(String[] args) {
-	   
-	
-	  int size = 6; //change to over 7 or under 3 
-	  
-	  Game game = new Game(size);
-	  game.setUpGame(size);
-	
-	  game.getGrid();
-	  
-}  
+public static void main(String[] args) 
+    {
+	 
+	  	game = new Game(5);
+		game.setUpGame(5);
+		grid = game.getGrid();// initialize a grid
+			
+		
+		Row userRow = grid.getRows().get(0);
+		Cell cell = userRow.getCells().get(0);
+		
+		Player player = new Player(userRow, cell);
+		
+		printBoard(grid, player);
+		
+    }  
 	  public Movement getPlayerMovement()
 	  {
 		  System.out.println("press 1 to go up");
@@ -56,7 +63,7 @@ public static void main(String[] args) {
 		   return Movement.NULL;
 	  }
 	  
-	  public void printBoard(Grid grid, Player player)
+	  public static void printBoard(Grid grid, Player player)
 	  {
 		  for(Row rows : grid.getRows())
 		  {
