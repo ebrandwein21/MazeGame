@@ -31,7 +31,14 @@ public class Cell{
 		
 	public void setLeft(CellComponents left)
 	{
+		if(left != null)
+		{
 		this.left = left;
+		}
+		else
+		{
+			this.left = CellComponents.WALL;
+		}
 	}
 	
 	public CellComponents getRight()
@@ -41,7 +48,14 @@ public class Cell{
 	
 	public void setRight(CellComponents right)
 	{
+		if(right != null)
+		{
 		this.right = right;
+		}
+		else
+		{
+			this.right = CellComponents.WALL;
+		}
 	}
 
 	
@@ -53,7 +67,14 @@ public class Cell{
 	
 	public void setUp(CellComponents up)
 	{
+		if(up != null)
+		{
 		this.up = up;
+		}	
+		else
+		{
+			this.up = CellComponents.WALL;
+		}
 	}
 	
 	public CellComponents getDown()
@@ -64,7 +85,14 @@ public class Cell{
 	
 	public void setDown(CellComponents down)
 	{
+		if(down != null)
+		{
 		this.down = down;
+		}	
+		else
+		{
+			this.down = CellComponents.WALL;
+		}
 	}
 	
 	@Override
