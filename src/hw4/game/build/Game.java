@@ -168,6 +168,13 @@ public class Game{
 		}
 		return cell;
 	}
+
+	@Override
+	public String toString() {
+		return "Game [grid=" + grid + "]";
+	}
+	
+	
 	
 }
 
