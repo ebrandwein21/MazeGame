@@ -104,9 +104,9 @@ class RowTest {
 	@Test
 	public void testToString() {
 		assertEquals("Row [cells=["
-							+ "Cell [left=EXIT, right=APERTURE, up=WALL, down=APERTURE], "
-							+ "Cell [left=APERTURE, right=WALL, up=WALL, down=APERTURE], "
-							+ "Cell [left=WALL, right=WALL, up=WALL, down=APERTURE]]]", row.toString());
+							+ "Cell [up=EXIT, down=APERTURE, left=WALL, right=APERTURE], "
+							+ "Cell [up=APERTURE, down=WALL, left=WALL, right=APERTURE], "
+							+ "Cell [up=WALL, down=WALL, left=WALL, right=APERTURE]]]", row.toString());
 	}
 
 }
