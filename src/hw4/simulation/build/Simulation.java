@@ -22,16 +22,16 @@ public class Simulation
 public static void main(String[] args) 
     {
 	 
-	  	game = new Game(5);
-		game.setUpGame(5);
-		grid = game.getGrid();// initialize a grid
+	  //	game = new Game(5);
+		//game.setUpGame(5);
+	//	grid = game.getGrid();// initialize a grid
 			
-		Row userRow = grid.getRows().get(0);
-		Cell cell = userRow.getCells().get(0);
+	//	Row userRow = grid.getRows().get(0);
+	//	Cell cell = userRow.getCells().get(0);
 		
-		Player player = new Player(userRow, cell);
+	//	Player player = new Player(userRow, cell);
 		
-		printBoard(grid, player);
+	//	printBoard(grid, player);
 		
     }  
 	  public Movement getPlayerMovement()
@@ -42,6 +42,8 @@ public static void main(String[] args)
 		  System.out.println("press 4 to go right");
 		 
 		  String direction = mazeScanner.nextLine();
+		  
+		  //may have to return cell.getComponent 
 		  
 		  if(direction.equals("1"))
 		  {

@@ -5,6 +5,7 @@ import hw4.maze.build.Grid;
 import hw4.maze.build.Row;
 import hw4.player.build.Movement;
 import hw4.player.build.Player;
+import hw4.simulation.build.Simulation;
 
 import java.util.Random;
 import java.util.ArrayList;
@@ -15,12 +16,55 @@ public class Game{
 	private Grid grid;
 	private Random rand = new Random(); 
 	private int size;
+	private Simulation simulation;
 	//methods are tentative and may need parameters, different access levels etc 
 	
 	
 	public boolean play(Movement m, Player p) {
 		
-		return true;
+		//checks if player or movement is null
+		if(p == null || m == null)
+		{
+			return false;
+		}
+		
+		//gets the current row and cell
+		Cell cell = p.getCurrentCell();
+		
+				
+		//checks if cell is a wall
+	    
+		if(m == Movement.UP && cell.getUp() == CellComponents.WALL || m == Movement.DOWN && cell.getDown() == CellComponents.WALL || m == Movement.RIGHT && cell.getRight() == CellComponents.WALL || m == Movement.LEFT && cell.getLeft() == CellComponents.WALL)
+		{
+			return false;
+		}
+		if(m == Movement.UP && cell.getUp() == CellComponents.EXIT || m == Movement.DOWN && cell.getDown() == CellComponents.EXIT || m == Movement.RIGHT && cell.getRight() == CellComponents.EXIT || m == Movement.LEFT && cell.getLeft() == CellComponents.EXIT )
+		{
+			return true;
+		}	
+		if(m == Movement.UP && cell.getUp() == CellComponents.APERTURE)
+		{
+			cell.getUp();
+			return true;
+		}
+		if(m == Movement.DOWN && cell.getUp() == CellComponents.APERTURE)
+		{
+			cell.getDown();
+			return true;
+		}
+		if(m == Movement.LEFT && cell.getUp() == CellComponents.APERTURE)
+		{
+			cell.getLeft();
+			return true;
+		}
+		if(m == Movement.RIGHT && cell.getUp() == CellComponents.APERTURE)
+		{
+			cell.getRight();
+			return true;
+	   }
+		return false;
+		
+		
 	}
 	
 	public Game(int size) {
@@ -171,6 +215,8 @@ public class Game{
 	public String toString() {
 		return "Game [grid=" + grid + "]";
 	}
+	
+	
 	
 	
 	
