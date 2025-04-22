@@ -63,20 +63,21 @@ public class Game{
 			return true;
 	   }
 		return false;
-		
-		
-	}
-	
+    }  
+
+	//Game constructor based on size
 	public Game(int size) {
 		super();
 		this.size = size;
 	}
 	
+	//Game constructor based on grid
 	public Game(Grid grid) {
 		super();
 		this.grid = grid;
 	}
 
+	//Getters and Setters
 	public void setUpGame(int size)
 	{
 		this.grid = createRandomGrid(size);
@@ -96,53 +97,66 @@ public class Game{
 	{
 		this.grid = grid;
 	}
+	//
 	
-	
+	//Creates a random grid
 	public Grid createRandomGrid(int size)
 	{
-	    ArrayList<Row> rows = new ArrayList<>();
-	    Cell[][] grid = new Cell[size][size];
-		createRandomCell(1);
-		for(int i = 0; i < size; i++) {
-			for(int j = 1; j < size; j++) {
-				//Top Edge
-				if(i == 0 && j < (size - 1)) {
-					grid[i][j] = createRandomCell(5);
-				}
-				//Top Right Corner
-				else if(i == 0 && j == (size - 1)) {
-					grid [i][j] = createRandomCell(2);
-				}
-				//Right Edge
-				else if(i < (size - 1) && j == (size - 1)){
-					grid [i][j] = createRandomCell(6);
-				}
-				//Bottom Right Corner
-				else if(i == (size - 1) && j == (size - 1)){
-					grid [i][j] = createRandomCell(3);
-				}
-				//Bottom Edge
-				else if(i == (size - 1) && j < (size - 1)){
-					grid [i][j] = createRandomCell(6);
-				}
-				//Bottom Left Corner
-				else if(i == (size - 1) && j == 0){
-					grid [i][j] = createRandomCell(6);
-				}
-				//Left Edge
-				else if(i < (size - 1) && j == 0) {
-					grid [i][j] = createRandomCell(8);
-				}
-				else {
-					grid [i][j] = createRandomCell(0);
-				}
+		if(size > 2 && size < 8) {
+			ArrayList<Row> rows = new ArrayList<Row>();
+			for(int i = 0; i < size; i++) {
+				rows.add(i, createRandomRow(i, size));
 			}
+			return new Grid(rows);
 		}
-		
-		return new Grid(rows);
+		return null;
 	}
 	
-	//Sets random cell depending on its location in the grid
+	//Creates a random row
+	public Row createRandomRow(int i, int size){
+		ArrayList<Cell> cells = new ArrayList<>();				
+				for(int j = 0; j < size; j++) {
+					//Top Left Corner
+					if(i == 0 && j == 0) {
+						cells.add(j, createRandomCell(1));	
+					}
+					//Top Edge
+					else if(i == 0 && j < (size - 1)) {
+						cells.add(j, createRandomCell(5));
+					}
+					//Top Right Corner
+					else if(i == 0 && j == (size - 1)) {
+						cells.add(j, createRandomCell(2));
+					}
+					//Right Edge
+					else if(i < (size - 1) && j == (size - 1)){
+						cells.add(j, createRandomCell(6));
+					}
+					//Bottom Right Corner
+					else if(i == (size - 1) && j == (size - 1)){
+						cells.add(j, createRandomCell(3));
+					}
+					//Bottom Edge
+					else if(i == (size - 1) && j < (size - 1)){
+						cells.add(j, createRandomCell(7));
+					}
+					//Bottom Left Corner
+					else if(i == (size - 1) && j == 0){
+						cells.add(j, createRandomCell(4));
+					}
+					//Left Edge
+					else if(i < (size - 1) && j == 0) {
+						cells.add(j, createRandomCell(8));
+					}
+					else {
+						cells.add(j, createRandomCell(0));
+					}
+					
+				}
+		return new Row(cells);
+	}
+	
+	//Creates a random cell, setting it depending on its location in the grid
 	public Cell createRandomCell(int location) {
 		Cell cell = new Cell(null, null, null, null);
 		//Middle of Grid
@@ -154,9 +168,9 @@ public class Game{
 		}
 		//Top Left Corner
 		else if(location == 1) {
-			cell.setUp(CellComponents.randomComponent());
+			cell.setUp(CellComponents.WALL);
 			cell.setDown(CellComponents.randomComponent());
-			cell.setLeft(CellComponents.WALL);
+			cell.setLeft(CellComponents.EXIT);
 			cell.setRight(CellComponents.randomComponent());
 		}
 		//Top Right Corner
@@ -206,6 +220,12 @@ public class Game{
 			cell.setUp(CellComponents.randomComponent());
 			cell.setDown(CellComponents.randomComponent());
 			cell.setLeft(CellComponents.WALL);
+			cell.setRight(CellComponents.randomComponent());
+		}
+		else {
+			cell.setUp(CellComponents.randomComponent());
+			cell.setDown(CellComponents.randomComponent());
+			cell.setLeft(CellComponents.randomComponent());
 			cell.setRight(CellComponents.randomComponent());
 		}
 		return cell;
