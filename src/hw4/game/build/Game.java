@@ -57,11 +57,9 @@ public class Game{
 	public Grid createRandomGrid(int size)
 	{
 	    ArrayList<Row> rows = new ArrayList<>();
-	
-		Cell[][] grid = new Cell[size][size];
+	    Cell[][] grid = new Cell[size][size];
 		createRandomCell(1);
 		for(int i = 0; i < size; i++) {
-			
 			for(int j = 1; j < size; j++) {
 				//Top Edge
 				if(i == 0 && j < (size - 1)) {
@@ -94,10 +92,8 @@ public class Game{
 				else {
 					grid [i][j] = createRandomCell(0);
 				}
-				
 			}
 		}
-		
 		
 		return new Grid(rows);
 	}

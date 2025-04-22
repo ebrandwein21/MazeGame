@@ -1,4 +1,4 @@
-package hw4.play.build;
+package hw4.simulation.build;
 
 import hw4.game.build.Game;
 import hw4.maze.build.Cell;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 
-public class Play
+public class Simulation
     {
 	   private static Game game;
 	   private static Grid grid;
@@ -26,7 +26,6 @@ public static void main(String[] args)
 		game.setUpGame(5);
 		grid = game.getGrid();// initialize a grid
 			
-		
 		Row userRow = grid.getRows().get(0);
 		Cell cell = userRow.getCells().get(0);
 		
