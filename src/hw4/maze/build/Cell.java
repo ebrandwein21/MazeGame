@@ -33,11 +33,11 @@ public class Cell{
 	{
 		if(left != null)
 		{
-		this.left = left;
+			this.left = left;
 		}
 		else
 		{
-			left = CellComponents.WALL;
+			this.left = CellComponents.WALL;
 		}
 	}
 	
@@ -50,11 +50,11 @@ public class Cell{
 	{
 		if(right != null)
 		{
-		this.right = right;
+			this.right = right;
 		}
 		else
 		{
-			right = CellComponents.WALL;
+			this.right = CellComponents.WALL;
 		}
 	}
 
@@ -69,11 +69,11 @@ public class Cell{
 	{
 		if(up != null)
 		{
-		this.up = up;
+			this.up = up;
 		}	
 		else
 		{
-			up = CellComponents.WALL;
+			this.up = CellComponents.WALL;
 		}
 	}
 	
@@ -87,11 +87,11 @@ public class Cell{
 	{
 		if(down != null)
 		{
-		this.down = down;
+			this.down = down;
 		}	
 		else
 		{
-			down = CellComponents.WALL;
+			this.down = CellComponents.WALL;
 		}
 	}
 	
