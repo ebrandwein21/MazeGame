@@ -8,6 +8,11 @@ public class Cell{
 	private CellComponents down;
 	private CellComponents left;
 	private CellComponents right;
+	private Cell upCell;
+	private Cell downCell;
+	private Cell leftCell;
+	private Cell rightCell;
+	
 	
 	public Cell(CellComponents left, CellComponents right,CellComponents up, CellComponents down )
 	{
@@ -16,6 +21,23 @@ public class Cell{
 		this.up = up;
 		this.down = down;
 		
+	}
+	
+	public Cell()
+	{
+		this.left = null;
+		this.right = null; 
+		this.up = null;
+		this.down = null;
+	}
+	
+	
+	public Cell(Cell upCell, Cell downCell, Cell leftCell, Cell rightCell)
+	{
+		this.upCell = upCell;
+		this.downCell = downCell;
+		this.leftCell = leftCell; 
+		this.rightCell = rightCell; 
 	}
 	
 	public void assertsEquals()
@@ -93,6 +115,46 @@ public class Cell{
 		{
 			this.down = CellComponents.WALL;
 		}
+	}
+	
+	public Cell getUpCell()
+	{
+		return upCell;
+	}
+	
+	public void setUpCell(Cell upCell)
+	{
+		this.upCell = upCell;
+	}
+	
+	public Cell getDownCell()
+	{
+		return downCell;
+	}
+	
+	public void setDownCell(Cell downCell)
+	{
+		this.downCell = downCell;
+	}
+	
+	public Cell getLeftCell()
+	{
+		return leftCell;
+	}
+	
+	public void setLeftCell(Cell leftCell)
+	{
+		this.leftCell = leftCell;
+	}
+	
+	public Cell getRightCell()
+	{
+		return rightCell;
+	}
+	
+	public void setRightCell(Cell rightCell)
+	{
+		this.rightCell = rightCell;
 	}
 	
 	@Override

@@ -31,11 +31,13 @@ public class Game{
 		//gets the current row and cell
 		Cell cell = p.getCurrentCell();
 		
+		System.out.println(cell + "==" + "hello");
 				
 		//checks if cell is a wall
 	    
 		if(m == Movement.UP && cell.getUp() == CellComponents.WALL || m == Movement.DOWN && cell.getDown() == CellComponents.WALL || m == Movement.RIGHT && cell.getRight() == CellComponents.WALL || m == Movement.LEFT && cell.getLeft() == CellComponents.WALL)
 		{
+	        
 			return false;
 		}
 		if(m == Movement.UP && cell.getUp() == CellComponents.EXIT || m == Movement.DOWN && cell.getDown() == CellComponents.EXIT || m == Movement.RIGHT && cell.getRight() == CellComponents.EXIT || m == Movement.LEFT && cell.getLeft() == CellComponents.EXIT )
@@ -44,22 +46,22 @@ public class Game{
 		}	
 		if(m == Movement.UP && cell.getUp() == CellComponents.APERTURE)
 		{
-			cell.getUp(); //not correct, trying to figure out how to move player
+			p.setCurrentCell(cell.getUpCell()); //not correct, trying to figure out how to move player
 			return true;
 		}
-		if(m == Movement.DOWN && cell.getUp() == CellComponents.APERTURE)
+		if(m == Movement.DOWN && cell.getDown() == CellComponents.APERTURE)
 		{
-			cell.getDown(); //not correct, trying to figure out how to move player
+			p.setCurrentCell(cell.getDownCell()); //not correct, trying to figure out how to move player
 			return true;
 		}
-		if(m == Movement.LEFT && cell.getUp() == CellComponents.APERTURE)
+		if(m == Movement.LEFT && cell.getLeft() == CellComponents.APERTURE)
 		{
-			cell.getLeft(); //not correct, trying to figure out how to move player
+			p.setCurrentCell(cell.getLeftCell()); //not correct, trying to figure out how to move player
 			return true;
 		}
-		if(m == Movement.RIGHT && cell.getUp() == CellComponents.APERTURE)
+		if(m == Movement.RIGHT && cell.getRight() == CellComponents.APERTURE)
 		{
-			cell.getRight(); //not correct, trying to figure out how to move player
+			p.setCurrentCell(cell.getRightCell()); //not correct, trying to figure out how to move player
 			return true;
 	   }
 		return false;
@@ -158,13 +160,14 @@ public class Game{
 	
 	//Creates a random cell, setting it depending on its location in the grid
 	public Cell createRandomCell(int location) {
-		Cell cell = new Cell(null, null, null, null);
+		Cell cell = new Cell();
 		//Middle of Grid
 		if(location == 0) {
 			cell.setUp(CellComponents.randomComponent());
 			cell.setDown(CellComponents.randomComponent());
 			cell.setLeft(CellComponents.randomComponent());
 			cell.setRight(CellComponents.randomComponent());
+			
 		}
 		//Top Left Corner
 		else if(location == 1) {
@@ -228,6 +231,7 @@ public class Game{
 			cell.setLeft(CellComponents.randomComponent());
 			cell.setRight(CellComponents.randomComponent());
 		}
+		System.out.println(cell + "==" + location);
 		return cell;
 	}
 

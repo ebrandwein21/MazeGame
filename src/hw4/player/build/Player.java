@@ -17,11 +17,22 @@ public class Player{
 	public Row getCurrentRow() {
 		return currentRow;
 	}
+	
+	public void setCurrentRow(Row row)
+	{
+		this.currentRow = row;
+	}
 
 
 	public Cell getCurrentCell() {
 		return currentCell;
 	}
+	
+	public void setCurrentCell(Cell cell)
+	{
+		this.currentCell = cell;
+	}
+
 
 	@Override
 	public String toString() {

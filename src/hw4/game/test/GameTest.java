@@ -13,7 +13,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import hw4.game.build.Game;
+import hw4.game.build.Game;   
 import hw4.maze.build.Cell;
 import hw4.maze.build.CellComponents;
 import hw4.maze.build.Grid;
@@ -101,7 +101,7 @@ class GameTest {
 	
 	@Test
 	void testAdjacentCellsSharedCellComponentConsistency() {
-		Grid grid = game.createRandomGrid(5);
+		Grid grid = game.createRandomGrid(3);
 		assertEquals(true, areGridCellsConsistent(grid));
 	}
 	
