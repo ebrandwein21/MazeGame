@@ -60,59 +60,14 @@ public class Game{
 	//Creates a random grid
 	public Grid createRandomGrid(int size)
 	{
-<<<<<<< HEAD
 		if(size > 2 && size < 8) {
 			ArrayList<Row> rows = new ArrayList<Row>();
 			for(int i = 0; i < size; i++) {
 				rows.add(i, createRandomRow(i, size));
-			  
-=======
-	    ArrayList<Row> rows = new ArrayList<>();
-	    Cell[][] grid = new Cell[size][size];
-		createRandomCell(1);
-		for(int i = 0; i < size; i++) {
-			for(int j = 1; j < size; j++) {
-				//Top Edge
-				if(i == 0 && j < (size - 1)) {
-					grid[i][j] = createRandomCell(5);
-				}
-				//Top Right Corner
-				else if(i == 0 && j == (size - 1)) {
-					grid [i][j] = createRandomCell(2);
-				}
-				//Right Edge
-				else if(i < (size - 1) && j == (size - 1)){
-					grid [i][j] = createRandomCell(6);
-				}
-				//Bottom Right Corner
-				else if(i == (size - 1) && j == (size - 1)){
-					grid [i][j] = createRandomCell(3);
-				}
-				//Bottom Edge
-				else if(i == (size - 1) && j < (size - 1)){
-					grid [i][j] = createRandomCell(6);
-				}
-				//Bottom Left Corner
-				else if(i == (size - 1) && j == 0){
-					grid [i][j] = createRandomCell(6);
-				}
-				//Left Edge
-				else if(i < (size - 1) && j == 0) {
-					grid [i][j] = createRandomCell(8);
-				}
-				else {
-					grid [i][j] = createRandomCell(0);
-				}
->>>>>>> a8b165c2a93b67206909ea39719e2f297e87a2e0
 			}
 			return new Grid(rows);
 		}
-<<<<<<< HEAD
 		return null;
-=======
-		
-		return new Grid(rows);
->>>>>>> a8b165c2a93b67206909ea39719e2f297e87a2e0
 	}
 	
 	//Creates a random row
