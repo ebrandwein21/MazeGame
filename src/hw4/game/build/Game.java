@@ -44,22 +44,22 @@ public class Game{
 		}	
 		if(m == Movement.UP && cell.getUp() == CellComponents.APERTURE)
 		{
-			cell.getUp();
+			cell.getUp(); //not correct, trying to figure out how to move player
 			return true;
 		}
 		if(m == Movement.DOWN && cell.getUp() == CellComponents.APERTURE)
 		{
-			cell.getDown();
+			cell.getDown(); //not correct, trying to figure out how to move player
 			return true;
 		}
 		if(m == Movement.LEFT && cell.getUp() == CellComponents.APERTURE)
 		{
-			cell.getLeft();
+			cell.getLeft(); //not correct, trying to figure out how to move player
 			return true;
 		}
 		if(m == Movement.RIGHT && cell.getUp() == CellComponents.APERTURE)
 		{
-			cell.getRight();
+			cell.getRight(); //not correct, trying to figure out how to move player
 			return true;
 	   }
 		return false;
