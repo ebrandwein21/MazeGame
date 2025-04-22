@@ -11,6 +11,10 @@ public class Grid{
 		this.rows = rows;
 	}
 	
+	public Cell getCell(int row, int col) {
+        return rows.get(row).getCell(col);
+    }
+	
 	public ArrayList<Row> getRows() {
 		return rows;
 	}

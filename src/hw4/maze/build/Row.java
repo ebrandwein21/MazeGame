@@ -12,13 +12,19 @@ public class Row{
 	 this.cells = cells;
  }
  
+ public Cell getCell(int index) {
+     return cells.get(index);
+ }
+ 
  public ArrayList<Cell> getCells() {
 		return cells;
 	}
 	
-	public void setCells(ArrayList<Cell> cells) {
-		this.cells = cells;
-	}
+public void setCells(ArrayList<Cell> cells) {
+	this.cells = cells;
+}
+
+
 
 	@Override
 	public String toString() {

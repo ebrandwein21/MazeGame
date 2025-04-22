@@ -12,8 +12,7 @@ public class Cell{
 	private Cell downCell;
 	private Cell leftCell;
 	private Cell rightCell;
-	
-	
+
 	public Cell(CellComponents left, CellComponents right,CellComponents up, CellComponents down )
 	{
 		this.left = left;
@@ -39,6 +38,13 @@ public class Cell{
 		this.leftCell = leftCell; 
 		this.rightCell = rightCell; 
 	}
+	
+	  public void setNeighbors(Cell up, Cell down, Cell left, Cell right) {
+	        this.upCell = up;
+	        this.downCell = down;
+	        this.leftCell = left;
+	        this.rightCell = right;
+	    }
 	
 	public void assertsEquals()
 	{
