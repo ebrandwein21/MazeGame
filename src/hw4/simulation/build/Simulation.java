@@ -22,16 +22,16 @@ public class Simulation
 public static void main(String[] args) 
     {
 	 
-	  //	game = new Game(5);
-		//game.setUpGame(5);
-	//	grid = game.getGrid();// initialize a grid
+	game = new Game(5);
+    game.setUpGame(5);
+	grid = game.getGrid();// initialize a grid
 			
-	//	Row userRow = grid.getRows().get(0);
-	//	Cell cell = userRow.getCells().get(0);
+	Row userRow = grid.getRows().get(0);
+	Cell cell = userRow.getCells().get(0);
 		
-	//	Player player = new Player(userRow, cell);
+	Player player = new Player(userRow, cell);
 		
-	//	printBoard(grid, player);
+	fillBoard(grid, player);
 		
     }  
 	  public Movement getPlayerMovement()
@@ -64,26 +64,38 @@ public static void main(String[] args)
 		   return Movement.NULL;
 	  }
 	  
-	  public static void printBoard(Grid grid, Player player)
+	  public static void fillBoard(Grid grid, Player player)
 	  {
 		  for(Row rows : grid.getRows())
 		  {
 			  for (Cell cells : rows.getCells())
 			  {
+				  System.out.print("[" + cells.getLeft() + ", " + cells.getRight() + ", " + cells.getUp() + ", " + cells.getDown() + "] ");
 				  if(cells == player.getCurrentCell())
 				  {
 					  System.out.println("A");
 				  }
-				  if(cells.getLeft() == CellComponents.EXIT && cells.getRight() == CellComponents.EXIT && cells.getUp() == CellComponents.EXIT && cells.getDown() == CellComponents.EXIT)
+				  else if(cells.getLeft() == CellComponents.EXIT && cells.getRight() == CellComponents.EXIT && cells.getUp() == CellComponents.EXIT && cells.getDown() == CellComponents.EXIT)
 				  {
 					  System.out.println("E");
 				  }
-				  else
+				  else if(cells.getLeft() == CellComponents.APERTURE && cells.getRight() == CellComponents.APERTURE && cells.getUp() == CellComponents.APERTURE && cells.getDown() == CellComponents.APERTURE)
+
 				  {
 					  System.out.println("S");
+					  
 				  }
+				  else
+				  {
+					  System.out.println("N");
+				  }
+				  		  
 			  }
+			  
+			  System.out.println();
+			  
 		  }
+		  
 	  }
 }
 
