@@ -107,9 +107,14 @@ public class Game{
 		if(size > 2 && size < 8) {
 			ArrayList<Row> rows = new ArrayList<Row>();
 			for(int i = 0; i < size; i++) {
+				
 				rows.add(i, createRandomRow(i, size));
 			}
-			return new Grid(rows);
+			Grid grid = new Grid(rows);
+			
+			//Set cell neighbors
+			setCellNeighbors(grid, size);
+			return grid;
 		}
 		return null;
 	}
@@ -233,6 +238,44 @@ public class Game{
 		}
 		System.out.println(cell + "==" + location);
 		return cell;
+	}
+	
+	public void setCellNeighbors(Grid grid, int size) {
+		
+		for(int i = 0; i < size; i++) {
+			for(int j = 0; j < size; j++) {
+				Cell current = grid.getCell(i, j);
+				Cell up = null;
+				Cell down = null;
+				Cell right = null;
+				Cell left = null;
+				
+				if(i > 0) {
+					up = grid.getCell(i - 1, j);
+				}
+				if(i < (size - 1)) {
+					down = grid.getCell(i + 1, j);
+				}
+				if(j > 0) {
+					left = grid.getCell(i, j - 1);
+				}
+				if(j < (size - 1)) {
+					right = grid.getCell(i, j + 1);
+				}
+				
+				current.setNeighbors(up, down, left, right);
+				syncSharedBorders(current, up, down, right, left);
+			}
+		}
+	}
+	
+	public void syncSharedBorders(Cell current, Cell up, Cell down, Cell right, Cell left) {
+				if(up != null) {
+					current.setUp(up.getDown());
+				}
+				if(left != null) {
+					current.setLeft(left.getRight());
+				}
 	}
 
 	@Override
