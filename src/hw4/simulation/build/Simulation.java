@@ -28,7 +28,7 @@ public static void main(String[] args)
 	grid = game.getGrid();
 	Movement move = getPlayerMovement(cell);
 	player.setCurrentCell(grid.getRows().get(0).getCells().get(0));
-	printBoard(grid, player);
+	displayBoard(grid, player);
 	game.play(move, player);
 
     }  
@@ -83,7 +83,7 @@ public static void main(String[] args)
 		 * @param initializes a new player for the game test
 		 */
 	  
-	  public static void printBoard(Grid grid, Player player)
+	  public static void displayBoard(Grid grid, Player player)
 	  {
 		  for(Row rows : grid.getRows())
 		  {
