@@ -29,16 +29,15 @@ public class Game{
 		}
 		
 		//gets the current row and cell
-		Cell cell = p.getCurrentCell();
+		Row userRow = grid.getRows().get(0);
+		Cell cell = userRow.getCells().get(0);
 		
 		System.out.println(cell + "==" + "hello");
 				
-		//checks if cell is a wall
-	    
-		if(m == Movement.UP && cell.getUp() == CellComponents.WALL || m == Movement.DOWN && cell.getDown() == CellComponents.WALL || m == Movement.RIGHT && cell.getRight() == CellComponents.WALL || m == Movement.LEFT && cell.getLeft() == CellComponents.WALL)
+		
+		if((m == Movement.UP) && (cell.getUp()) == (CellComponents.WALL) || (m == Movement.DOWN) && (cell.getDown()) == (CellComponents.WALL) || (m == Movement.RIGHT) && (cell.getRight()) == (CellComponents.WALL) || (m == Movement.LEFT) && (cell.getLeft()) == (CellComponents.WALL))
 		{
-	        
-			return false;
+			return true;
 		}
 		if(m == Movement.UP && cell.getUp() == CellComponents.EXIT || m == Movement.DOWN && cell.getDown() == CellComponents.EXIT || m == Movement.RIGHT && cell.getRight() == CellComponents.EXIT || m == Movement.LEFT && cell.getLeft() == CellComponents.EXIT )
 		{

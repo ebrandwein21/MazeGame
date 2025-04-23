@@ -59,16 +59,16 @@ class GameTest {
 	private static Stream<Arguments> playMovementProvider() {
 		return Stream.of(Arguments.of(true, game.play(Movement.UP, player)),
 				Arguments.of(false, game.play(Movement.RIGHT, player)),
-				Arguments.of(true, game.play(Movement.DOWN, player)),
+				Arguments.of(true, game.play(Movement.DOWN, player)), //fail
 				Arguments.of(false, game.play(Movement.DOWN, player)),
 				Arguments.of(true, game.play(Movement.UP, player)),
 				Arguments.of(true, game.play(Movement.LEFT, player)),
 				Arguments.of(true, game.play(Movement.RIGHT, player)),
-				Arguments.of(true, game.play(Movement.LEFT, player)),
+				Arguments.of(true, game.play(Movement.LEFT, player)), //fail
 				Arguments.of(false, game.play(Movement.LEFT, player)),
-				Arguments.of(true, game.play(Movement.UP, player)),
+				Arguments.of(true, game.play(Movement.UP, player)), //fail
 				Arguments.of(false, game.play(Movement.UP, player)),
-				Arguments.of(true, game.play(Movement.LEFT, player)),
+				Arguments.of(true, game.play(Movement.LEFT, player)), //fail
 				Arguments.of(true, game.play(Movement.LEFT, player))
 				);
 	}
@@ -130,7 +130,7 @@ class GameTest {
 	
 	@Test
 	void testIfThereIsAnExitOnLeft() {
-		Game game = new Game(3);
+		Game game = new Game(5);
 		assertEquals(true, isThereAnExitOnLeftSideGrid(game.createRandomGrid(5)));
 	}
 	
@@ -141,7 +141,7 @@ class GameTest {
 	}
 	
 	private static Stream<Arguments> invalidGridSizeInputProvider() {
-		Game game = new Game(3);
+		Game game = new Game(5);
 		return Stream.of(Arguments.of(null, game.createRandomGrid(2)),
 							Arguments.of(null, game.createRandomGrid(8)));
 	}
