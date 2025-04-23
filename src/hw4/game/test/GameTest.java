@@ -58,13 +58,13 @@ class GameTest {
 
 	private static Stream<Arguments> playMovementProvider() {
 		return Stream.of(Arguments.of(true, game.play(Movement.UP, player)),
-				Arguments.of(false, game.play(Movement.RIGHT, player)),
-				Arguments.of(true, game.play(Movement.DOWN, player)), //fail
-				Arguments.of(false, game.play(Movement.DOWN, player)),
-				Arguments.of(true, game.play(Movement.UP, player)),
-				Arguments.of(true, game.play(Movement.LEFT, player)),
+				Arguments.of(false, game.play(Movement.RIGHT, player)), //fail
+				Arguments.of(true, game.play(Movement.DOWN, player)), 
+				Arguments.of(false, game.play(Movement.DOWN, player)), //fail
+				Arguments.of(true, game.play(Movement.UP, player)), 
+				Arguments.of(true, game.play(Movement.LEFT, player)), 
 				Arguments.of(true, game.play(Movement.RIGHT, player)),
-				Arguments.of(true, game.play(Movement.LEFT, player)), //fail
+				Arguments.of(true, game.play(Movement.LEFT, player)), 
 				Arguments.of(false, game.play(Movement.LEFT, player)),
 				Arguments.of(true, game.play(Movement.UP, player)), //fail
 				Arguments.of(false, game.play(Movement.UP, player)),

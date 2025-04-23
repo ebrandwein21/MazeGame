@@ -27,38 +27,43 @@ public class Game{
 		{
 			return false;
 		}
-		
+
 		//gets the current row and cell
-		Row userRow = grid.getRows().get(0);
-		Cell cell = userRow.getCells().get(0);
-		
+		//Row userRow = grid.getRows().get(0);
+		//Cell cell = userRow.getCells().get(0);
+		Cell cell = p.getCurrentCell();
 		System.out.println(cell + "==" + "hello");
-				
-		
-		if((m == Movement.UP) && (cell.getUp()) == (CellComponents.WALL) || (m == Movement.DOWN) && (cell.getDown()) == (CellComponents.WALL) || (m == Movement.RIGHT) && (cell.getRight()) == (CellComponents.WALL) || (m == Movement.LEFT) && (cell.getLeft()) == (CellComponents.WALL))
+	
+		if(cell == null)
 		{
+			return false;
+		}
+		if((m == Movement.UP && cell.getUp() == CellComponents.WALL) || (m == Movement.DOWN && cell.getDown() == CellComponents.WALL) || (m == Movement.RIGHT && cell.getRight() == CellComponents.WALL) || (m == Movement.LEFT && cell.getLeft() == CellComponents.WALL))
+		{
+			p.setCurrentCell(cell); 
 			return true;
 		}
-		if(m == Movement.UP && cell.getUp() == CellComponents.EXIT || m == Movement.DOWN && cell.getDown() == CellComponents.EXIT || m == Movement.RIGHT && cell.getRight() == CellComponents.EXIT || m == Movement.LEFT && cell.getLeft() == CellComponents.EXIT )
-		{
+		if((m == Movement.UP && cell.getUp() == CellComponents.EXIT) || (m == Movement.DOWN && cell.getDown() == CellComponents.EXIT) || (m == Movement.RIGHT && cell.getRight() == CellComponents.EXIT) || (m == Movement.LEFT && cell.getLeft() == CellComponents.EXIT) || (p.getCurrentCell().getDownCell()) != null || p.getCurrentCell().getDownCell() != null || p.getCurrentCell().getUpCell() != null || p.getCurrentCell().getLeftCell() != null|| p.getCurrentCell().getRightCell() != null)
+		{   
+			p.setCurrentCell(cell); 
 			return true;
 		}	
-		if(m == Movement.UP && cell.getUp() == CellComponents.APERTURE)
+		if((m == Movement.UP && cell.getUp() == CellComponents.APERTURE))
 		{
 			p.setCurrentCell(cell.getUpCell()); 
 			return true;
 		}
-		if(m == Movement.DOWN && cell.getDown() == CellComponents.APERTURE)
+		if((m == Movement.DOWN && cell.getDown() == CellComponents.APERTURE))
 		{
 			p.setCurrentCell(cell.getDownCell()); 
 			return true;
 		}
-		if(m == Movement.LEFT && cell.getLeft() == CellComponents.APERTURE)
+		if((m == Movement.LEFT && cell.getLeft() == CellComponents.APERTURE))
 		{
 			p.setCurrentCell(cell.getLeftCell()); 
 			return true;
 		}
-		if(m == Movement.RIGHT && cell.getRight() == CellComponents.APERTURE)
+		if((m == Movement.RIGHT && cell.getRight() == CellComponents.APERTURE))
 		{
 			p.setCurrentCell(cell.getRightCell()); 
 			return true;
@@ -81,7 +86,7 @@ public class Game{
 	//Getters and Setters
 	public void setUpGame(int size)
 	{
-		this.grid = createRandomGrid(size);
+		this.grid = createRandomGrid(size); 
 	}
 	
 	public void assertsEquals()
@@ -271,17 +276,11 @@ public class Game{
 	public void shareBorders(Cell current, Cell up, Cell down, Cell right, Cell left) {
 				if(up != null) {
 					current.setUp(up.getDown());
-					up.setDownCell(current);
 				}
 				if(left != null) {
 					current.setLeft(left.getRight());
 				}
-				if(down != null) {
-					current.setDown(down.getRight());
-				}
-				if(right != null) {
-					current.setRight(right.getRight());
-				}
+			
 	}
 
 	@Override
