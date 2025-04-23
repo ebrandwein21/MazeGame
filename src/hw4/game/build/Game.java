@@ -264,12 +264,12 @@ public class Game{
 				}
 				
 				current.setNeighbors(up, down, left, right);
-				syncSharedBorders(current, up, down, right, left);
+				shareBorders(current, up, down, right, left);
 			}
 		}
 	}
 	
-	public void syncSharedBorders(Cell current, Cell up, Cell down, Cell right, Cell left) {
+	public void shareBorders(Cell current, Cell up, Cell down, Cell right, Cell left) {
 				if(up != null) {
 					current.setUp(up.getDown());
 				}
