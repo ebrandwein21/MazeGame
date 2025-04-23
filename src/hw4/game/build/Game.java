@@ -85,11 +85,6 @@ public class Game{
 		this.grid = createRandomGrid(size);
 	}
 	
-	public void assertsEquals()
-	{
-		
-	}
-	
 	public Grid getGrid()
 	{
 		return grid;
@@ -101,7 +96,12 @@ public class Game{
 	}
 	//
 	
-	//Creates a random grid
+	/**
+	 * This method creates a new grid of size size and is full of cells. Each cell in the grid has random components 
+	 * based on its location and are consistent with those around it. The grid has to be a size between 3x3 and 7x7.
+	 * @param size is the desired size of the grid (Between 3x3 and 7x7).
+	 * @return This method returns a new grid if it meets the size requirement and if not, returns null.
+	 */
 	public Grid createRandomGrid(int size)
 	{
 		if(size > 2 && size < 8) {
@@ -119,7 +119,12 @@ public class Game{
 		return null;
 	}
 	
-	//Creates a random row
+	/**
+	 * This method creates a Row with randomized cells depending on their location in the grid.
+	 * @param i is the current row.
+	 * @param size is the length of the row.
+	 * @return This method returns a newly created Row of length size, in the i row, with randomized components.
+	 */
 	public Row createRandomRow(int i, int size){
 		ArrayList<Cell> cells = new ArrayList<>();				
 				for(int j = 0; j < size; j++) {
@@ -163,19 +168,28 @@ public class Game{
 		return new Row(cells);
 	}
 	
-	//Creates a random cell, setting it depending on its location in the grid
+	/**
+	 * This method creates a random cell, setting it depending on its location in the grid 
+	 * (e.g if a cell is in the top right corner, its left component will be an EXIT,
+	 * its top component will be a WALL, and the other two will be random).
+	 * @param location is an integer indicating the cell's position in the grid:
+	 * 	<ul>
+	 * 		<li>1 - Top Left Corner</li>
+	 * 		<li>2 - Top Right Corner</li>
+	 * 		<li>3 - Bottom Right Corner</li>
+	 * 		<li>4 - Bottom Left Corner</li>
+	 * 		<li>5 - Top Edge</li>
+	 * 		<li>6 - Right Edge</li>
+	 * 		<li>7 - Bottom Edge</li>
+	 * 		<li>8 - Left Edge</li>
+	 * 		<li>Anything else will be set as a middle of the grid component</li>
+	 * 	</ul>
+	 * @return This method returns the newly created cell with all of its components.
+	 */
 	public Cell createRandomCell(int location) {
 		Cell cell = new Cell();
-		//Middle of Grid
-		if(location == 0) {
-			cell.setUp(CellComponents.randomComponent());
-			cell.setDown(CellComponents.randomComponent());
-			cell.setLeft(CellComponents.randomComponent());
-			cell.setRight(CellComponents.randomComponent());
-			
-		}
 		//Top Left Corner
-		else if(location == 1) {
+		if(location == 1) {
 			cell.setUp(CellComponents.WALL);
 			cell.setDown(CellComponents.randomComponent());
 			cell.setLeft(CellComponents.EXIT);
@@ -230,6 +244,7 @@ public class Game{
 			cell.setLeft(CellComponents.WALL);
 			cell.setRight(CellComponents.randomComponent());
 		}
+		//Middle of Grid
 		else {
 			cell.setUp(CellComponents.randomComponent());
 			cell.setDown(CellComponents.randomComponent());
@@ -240,8 +255,15 @@ public class Game{
 		return cell;
 	}
 	
+	/**
+	 * This method makes sure the grid is well connected and consistent. It checks which direction each cell shares borders
+	 * in and sets those bordering cells as its neighbors. If a cell doesn't border another on a side, its neighbor in that
+	 * direction will be set to null. The cell components on these shared borders will also be synchronized, creating a 
+	 * consistent grid.
+	 * @param grid is the grid in which neighbors should be set
+	 * @param size is the length of the rows/columns
+	 */
 	public void setCellNeighbors(Grid grid, int size) {
-		
 		for(int i = 0; i < size; i++) {
 			for(int j = 0; j < size; j++) {
 				Cell current = grid.getCell(i, j);
@@ -264,33 +286,31 @@ public class Game{
 				}
 				
 				current.setNeighbors(up, down, left, right);
-				shareBorders(current, up, down, right, left);
+				shareBorders(current, up, left);
 			}
 		}
 	}
 	
-	public void shareBorders(Cell current, Cell up, Cell down, Cell right, Cell left) {
-				if(up != null) {
-					current.setUp(up.getDown());
-				}
-				if(left != null) {
-					current.setLeft(left.getRight());
-				}
+	/**
+	 * This method synchronizes the components on two of the borders of the current cell to make sure they are consistent.
+	 * It does this by checking if the cells above or to the left of the current exist. If they do, it sets 
+	 * current's components to that of its neighbor. 
+	 * @param current is the current cell 
+	 * @param up is the cell directly above the current cell
+	 * @param left is the cell directly to the left of the current cell
+	 */
+	public void shareBorders(Cell current, Cell up, Cell left) {
+		if(up != null) {
+			current.setUp(up.getDown());
+			}
+		if(left != null) {
+			current.setLeft(left.getRight());
+			}
 	}
 
 	@Override
 	public String toString() {
 		return "Game [grid=" + grid + "]";
 	}
-	
-	
-	
-	
-	
+
 }
-
-
-//so we have to create a 3d array that represents the gameBoard
-//we should do this as random
-//the exit will always be on the top left corner
-//create print grid!!!
