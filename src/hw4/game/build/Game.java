@@ -23,12 +23,12 @@ public class Game{
 	 * creates a boolean that returns false if the player or movement is null
 	 * sets cell to the current cell the player is occupying
 	 * checks if the cell should move to the cell in the direction it is trying to go to 
-	 * @param m
-	 * @param p
+	 * @param movement m used to move the player
+	 * @param player p used as where the user is on the grid 
 	 * @return if the cell is null, false is returned 
-	 * @return if the cell is not null and hits a wall, set the cell 
-	 * @return if the cell is not null and hits exit, set the cell 
-	 * @return if the cell is not null and hits an apperture cell, set the cell 
+	 * @return if the cell is not null and hits a wall, set the player 
+	 * @return if the cell is not null and hits exit, set the player 
+	 * @return if the cell is not null and hits an apperture cell, set the player 
 	 * */
 	public boolean play(Movement m, Player p) 
 	{

@@ -67,6 +67,7 @@ public class Cell{
 	        this.leftCell = left;
 	        this.rightCell = right;
 	}
+	
 	/**
 	 * Constructor that gets the left cellComponent and returns it so it can be set
 	 * @return: left

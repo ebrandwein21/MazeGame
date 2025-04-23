@@ -25,12 +25,14 @@ public static void main(String[] args)
 	 
 	game = new Game(5);
     game.setUpGame(5);
-	grid = game.getGrid();// initialize a grid
-			
-	player.getCurrentCell();
+	grid = game.getGrid();
 	
-	fillBoard(grid, player);
-		
+	
+	Movement move = getPlayerMovement(cell);
+	player.setCurrentCell(grid.getRows().get(0).getCells().get(0));
+	printBoard(grid, player);
+	game.play(move, player);
+
     }  
 	/**
 	 * asks the user for which movement they would like 
@@ -38,7 +40,7 @@ public static void main(String[] args)
 	 * sets the current cell to the cell after moving 
 	 * @return returns the desired movement, if no movement, returns null 
 	 */
-	  public static Movement getPlayerMovement()
+	  public static Movement getPlayerMovement(Cell cell)
 	  {
 		  System.out.println("press 1 to go up: ");
 		  System.out.println("press 2 to go down: ");
@@ -47,24 +49,27 @@ public static void main(String[] args)
 		 
 		  String direction = mazeScanner.nextLine();
 		  
-		  
 		  if(direction.equals("1"))
 		  {
+			  cell.getUp();
 			  player.setCurrentCell(cell);
 			  return Movement.UP;
 		  }
 		  if(direction.equals("2"))
 		  {
+			  cell.getDown();
 			  player.setCurrentCell(cell); 
 			  return Movement.DOWN;
 		  }
 		  if(direction.equals("3"))
 		  {
+			  cell.getLeft();
 			  player.setCurrentCell(cell); 
 			  return Movement.LEFT;
 		  }
 		  if(direction.equals("4"))
 		  {
+			  cell.getRight();
 			  player.setCurrentCell(cell); 
 		  	  return Movement.RIGHT;
 		  }
@@ -80,7 +85,7 @@ public static void main(String[] args)
 		 * @param initializes a new player for the game test
 		 */
 	  
-	  public static void fillBoard(Grid grid, Player player)
+	  public static void printBoard(Grid grid, Player player)
 	  {
 		  for(Row rows : grid.getRows())
 		  {
@@ -113,5 +118,3 @@ public static void main(String[] args)
 		      System.out.println();  
 	   }
     }
-
-
