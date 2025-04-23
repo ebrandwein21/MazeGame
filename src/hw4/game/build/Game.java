@@ -17,8 +17,7 @@ public class Game{
 	private Random rand = new Random(); 
 	private int size;
 	private Simulation simulation;
-
-	
+     
 	/**
 	 * creates a boolean that returns false if the player or movement is null
 	 * sets cell to the current cell the player is occupying
@@ -29,18 +28,16 @@ public class Game{
 	 * @return if the cell is not null and hits a wall, set the player 
 	 * @return if the cell is not null and hits exit, set the player 
 	 * @return if the cell is not null and hits an apperture cell, set the player 
-	 * */
+	 */
+	
 	public boolean play(Movement m, Player p) 
 	{
-		
 		if(p == null || m == null)
 		{
 			return false;
 		}
-		//Row userRow = grid.getRows().get(0);
-		//Cell cell = userRow.getCells().get(0);
-
-		Cell cell = p.getCurrentCell();
+		Row userRow = grid.getRows().get(0);
+		Cell cell = userRow.getCells().get(0);
 	
 		if(cell == null)
 		{
@@ -107,16 +104,15 @@ public class Game{
 	{
 		this.grid = createRandomGrid(size); 
 	}
-	
-	/**
+     /**
 	 * gets the grid so that it can be used to play the game 
 	 * @return returns a grid
 	 */
+	
 	public Grid getGrid()
 	{
 		return grid;
 	}
-	
 	/**
 	 * sets the grid so that it can be used in testing the game
 	 * @param an instance of the grid
@@ -125,14 +121,13 @@ public class Game{
 	{
 		this.grid = grid;
 	}
-	//
-	
 	/**
 	 * This method creates a new grid of size size and is full of cells. Each cell in the grid has random components 
 	 * based on its location and are consistent with those around it. The grid has to be a size between 3x3 and 7x7.
 	 * @param size is the desired size of the grid (Between 3x3 and 7x7).
 	 * @return This method returns a new grid if it meets the size requirement and if not, returns null.
 	 */
+	
 	public Grid createRandomGrid(int size)
 	{
 		if(size > 2 && size < 8) {
@@ -156,6 +151,7 @@ public class Game{
 	 * @param size is the length of the row.
 	 * @return This method returns a newly created Row of length size, in the i row, with randomized components.
 	 */
+	
 	public Row createRandomRow(int i, int size){
 		ArrayList<Cell> cells = new ArrayList<>();				
 				for(int j = 0; j < size; j++) {
@@ -217,6 +213,7 @@ public class Game{
 	 * 	</ul>
 	 * @return This method returns the newly created cell with all of its components.
 	 */
+	
 	public Cell createRandomCell(int location) {
 		Cell cell = new Cell();
 		//Top Left Corner
@@ -294,6 +291,7 @@ public class Game{
 	 * @param grid is the grid in which neighbors should be set
 	 * @param size is the length of the rows/columns
 	 */
+	
 	public void setCellNeighbors(Grid grid, int size) {
 		for(int i = 0; i < size; i++) {
 			for(int j = 0; j < size; j++) {
@@ -321,8 +319,6 @@ public class Game{
 			}
 		}
 	}
-	
-
 	/**
 	 * This method synchronizes the components on two of the borders of the current cell to make sure they are consistent.
 	 * It does this by checking if the cells above or to the left of the current exist. If they do, it sets 
@@ -339,10 +335,10 @@ public class Game{
 			current.setLeft(left.getRight());
 			}
 	}
-    
 	/**
 	 *@return  a to string that writes a grid
 	 */
+	
 	@Override
 	public String toString() 
 	{

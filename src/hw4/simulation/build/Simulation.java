@@ -26,8 +26,6 @@ public static void main(String[] args)
 	game = new Game(5);
     game.setUpGame(5);
 	grid = game.getGrid();
-	
-	
 	Movement move = getPlayerMovement(cell);
 	player.setCurrentCell(grid.getRows().get(0).getCells().get(0));
 	printBoard(grid, player);
