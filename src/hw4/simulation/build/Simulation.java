@@ -17,7 +17,7 @@ public class Simulation
 	   private static Game game;
 	   private static Grid grid;
 	     
-	   Scanner mazeScanner = new Scanner(System.in);
+	   public static Scanner mazeScanner = new Scanner(System.in);
 
 public static void main(String[] args) 
     {
@@ -28,18 +28,20 @@ public static void main(String[] args)
 			
 	Row userRow = grid.getRows().get(0);
 	Cell cell = userRow.getCells().get(0);
-		
+	
+	
 	Player player = new Player(userRow, cell);
-		
+	fillBoard(grid, player);
+    Movement move = getPlayerMovement();
 	fillBoard(grid, player);
 		
     }  
-	  public Movement getPlayerMovement()
+	  public static Movement getPlayerMovement()
 	  {
-		  System.out.println("press 1 to go up");
-		  System.out.println("press 2 to go down");
-		  System.out.println("press 3 to go left");
-		  System.out.println("press 4 to go right");
+		  System.out.println("press 1 to go up: ");
+		  System.out.println("press 2 to go down: ");
+		  System.out.println("press 3 to go left: ");
+		  System.out.println("press 4 to go right: ");
 		 
 		  String direction = mazeScanner.nextLine();
 		  
@@ -71,6 +73,7 @@ public static void main(String[] args)
 			  for (Cell cells : rows.getCells())
 			  {
 				  System.out.print("[" + cells.getLeft() + ", " + cells.getRight() + ", " + cells.getUp() + ", " + cells.getDown() + "] ");
+				 
 				  if(cells == player.getCurrentCell())
 				  {
 					  System.out.println("A");
@@ -95,8 +98,9 @@ public static void main(String[] args)
 			  System.out.println();
 			  
 		  }
+		      System.out.println();
 		  
 	  }
-}
+    }
 
 
