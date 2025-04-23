@@ -79,7 +79,7 @@ public static void main(String[] args)
 				  {
 					  System.out.println("E");
 				  }
-				  else if(cells.getLeft() == CellComponents.APERTURE && cells.getRight() == CellComponents.APERTURE && cells.getUp() == CellComponents.APERTURE && cells.getDown() == CellComponents.APERTURE)
+				  else if(cells.getLeft() == CellComponents.APERTURE || cells.getRight() == CellComponents.APERTURE || cells.getUp() == CellComponents.APERTURE || cells.getDown() == CellComponents.APERTURE || cells.getLeft() == CellComponents.WALL || cells.getRight() == CellComponents.WALL || cells.getUp() == CellComponents.WALL || cells.getDown() == CellComponents.WALL )
 
 				  {
 					  System.out.println("S");
