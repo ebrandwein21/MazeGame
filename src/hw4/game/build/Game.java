@@ -17,22 +17,30 @@ public class Game{
 	private Random rand = new Random(); 
 	private int size;
 	private Simulation simulation;
-	//methods are tentative and may need parameters, different access levels etc 
+
 	
-	
-	public boolean play(Movement m, Player p) {
+	/**
+	 * creates a boolean that returns false if the player or movement is null
+	 * sets cell to the current cell the player is occupying
+	 * checks if the cell should move to the cell in the direction it is trying to go to 
+	 * @param m
+	 * @param p
+	 * @return if the cell is null, false is returned 
+	 * @return if the cell is not null and hits a wall, set the cell 
+	 * @return if the cell is not null and hits exit, set the cell 
+	 * @return if the cell is not null and hits an apperture cell, set the cell 
+	 * */
+	public boolean play(Movement m, Player p) 
+	{
 		
-		//checks if player or movement is null
 		if(p == null || m == null)
 		{
 			return false;
 		}
-
-		//gets the current row and cell
 		//Row userRow = grid.getRows().get(0);
 		//Cell cell = userRow.getCells().get(0);
+
 		Cell cell = p.getCurrentCell();
-		System.out.println(cell + "==" + "hello");
 	
 		if(cell == null)
 		{
@@ -43,7 +51,7 @@ public class Game{
 			p.setCurrentCell(cell); 
 			return true;
 		}
-		if((m == Movement.UP && cell.getUp() == CellComponents.EXIT) || (m == Movement.DOWN && cell.getDown() == CellComponents.EXIT) || (m == Movement.RIGHT && cell.getRight() == CellComponents.EXIT) || (m == Movement.LEFT && cell.getLeft() == CellComponents.EXIT) || (p.getCurrentCell().getDownCell()) != null || p.getCurrentCell().getDownCell() != null || p.getCurrentCell().getUpCell() != null || p.getCurrentCell().getLeftCell() != null|| p.getCurrentCell().getRightCell() != null)
+		if((m == Movement.UP && cell.getUp() == CellComponents.EXIT) || (m == Movement.DOWN && cell.getDown() == CellComponents.EXIT) || (m == Movement.RIGHT && cell.getRight() == CellComponents.EXIT) || (m == Movement.LEFT && cell.getLeft() == CellComponents.EXIT))
 		{   
 			p.setCurrentCell(cell); 
 			return true;
@@ -71,29 +79,48 @@ public class Game{
 		return false;
     }  
 
-	//Game constructor based on size
-	public Game(int size) {
+	/**
+	 * Creates a game constructor based on the size of the grid by calling the parent object and implementing the size of the grid equal to the current instance of itself
+	 * @param the size of the grid 
+	 */
+	public Game(int size) 
+	{
 		super();
 		this.size = size;
 	}
 	
-	//Game constructor based on grid
-	public Game(Grid grid) {
+	/**
+	 * Creates a game constructor based on the grid by callinf the parent object and implementing grid equal to the current instance of itself
+	 * @param grid
+	 */
+	public Game(Grid grid) 
+	{
 		super();
 		this.grid = grid;
 	}
-
-	//Getters and Setters
+	
+	/**
+	 * sets up the game by setting the current instance of grid to a random grid of ambiguous size 
+	 * @param the size of the grid
+	 */
 	public void setUpGame(int size)
 	{
 		this.grid = createRandomGrid(size); 
 	}
 	
+	/**
+	 * gets the grid so that it can be used to play the game 
+	 * @return returns a grid
+	 */
 	public Grid getGrid()
 	{
 		return grid;
 	}
 	
+	/**
+	 * sets the grid so that it can be used in testing the game
+	 * @param an instance of the grid
+	 */
 	public void setGrid(Grid grid)
 	{
 		this.grid = grid;
@@ -312,9 +339,13 @@ public class Game{
 			current.setLeft(left.getRight());
 			}
 	}
-
+    
+	/**
+	 *@return  a to string that writes a grid
+	 */
 	@Override
-	public String toString() {
+	public String toString() 
+	{
 		return "Game [grid=" + grid + "]";
 	}
 

@@ -16,7 +16,8 @@ public class Simulation
     {
 	   private static Game game;
 	   private static Grid grid;
-	     
+	   private static Cell cell;
+	   private static Player player;
 	   public static Scanner mazeScanner = new Scanner(System.in);
 
 public static void main(String[] args) 
@@ -26,16 +27,17 @@ public static void main(String[] args)
     game.setUpGame(5);
 	grid = game.getGrid();// initialize a grid
 			
-	Row userRow = grid.getRows().get(0);
-	Cell cell = userRow.getCells().get(0);
+	player.getCurrentCell();
 	
-	
-	Player player = new Player(userRow, cell);
-	fillBoard(grid, player);
-    Movement move = getPlayerMovement();
 	fillBoard(grid, player);
 		
     }  
+	/**
+	 * asks the user for which movement they would like 
+	 * uses a scanner to check user input
+	 * sets the current cell to the cell after moving 
+	 * @return returns the desired movement, if no movement, returns null 
+	 */
 	  public static Movement getPlayerMovement()
 	  {
 		  System.out.println("press 1 to go up: ");
@@ -45,40 +47,50 @@ public static void main(String[] args)
 		 
 		  String direction = mazeScanner.nextLine();
 		  
-		  //may have to return cell.getComponent 
 		  
 		  if(direction.equals("1"))
 		  {
+			  player.setCurrentCell(cell);
 			  return Movement.UP;
 		  }
 		  if(direction.equals("2"))
 		  {
+			  player.setCurrentCell(cell); 
 			  return Movement.DOWN;
 		  }
 		  if(direction.equals("3"))
 		  {
+			  player.setCurrentCell(cell); 
 			  return Movement.LEFT;
 		  }
 		  if(direction.equals("4"))
 		  {
+			  player.setCurrentCell(cell); 
 		  	  return Movement.RIGHT;
 		  }
 		   return Movement.NULL;
 	  }
+	  
+	  /**
+		 * fills the board with a grid  
+		 * loops through the rows in grid and cells in the rows and prints out the current cell as A, the exit cell as E and the aperture cell as S 
+		 * prints null cell as n for testing and prints lines at the end of the row and cell for each loop to create indentation as a grid would
+		 * @return returns the desired movement, if no movement, returns null 
+		 * @param initializes a new grid 
+		 * @param initializes a new player for the game test
+		 */
 	  
 	  public static void fillBoard(Grid grid, Player player)
 	  {
 		  for(Row rows : grid.getRows())
 		  {
 			  for (Cell cells : rows.getCells())
-			  {
-				  System.out.print("[" + cells.getLeft() + ", " + cells.getRight() + ", " + cells.getUp() + ", " + cells.getDown() + "] ");
-				 
+			  {				 
 				  if(cells == player.getCurrentCell())
 				  {
 					  System.out.println("A");
 				  }
-				  else if(cells.getLeft() == CellComponents.EXIT && cells.getRight() == CellComponents.EXIT && cells.getUp() == CellComponents.EXIT && cells.getDown() == CellComponents.EXIT)
+				  else if(cells.getLeft() == CellComponents.EXIT || cells.getRight() == CellComponents.EXIT || cells.getUp() == CellComponents.EXIT || cells.getDown() == CellComponents.EXIT)
 				  {
 					  System.out.println("E");
 				  }
@@ -98,9 +110,8 @@ public static void main(String[] args)
 			  System.out.println();
 			  
 		  }
-		      System.out.println();
-		  
-	  }
+		      System.out.println();  
+	   }
     }
 
 
