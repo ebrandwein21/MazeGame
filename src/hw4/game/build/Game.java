@@ -46,22 +46,22 @@ public class Game{
 		}	
 		if(m == Movement.UP && cell.getUp() == CellComponents.APERTURE)
 		{
-			p.setCurrentCell(cell.getUpCell()); //not correct, trying to figure out how to move player
+			p.setCurrentCell(cell.getUpCell()); 
 			return true;
 		}
 		if(m == Movement.DOWN && cell.getDown() == CellComponents.APERTURE)
 		{
-			p.setCurrentCell(cell.getDownCell()); //not correct, trying to figure out how to move player
+			p.setCurrentCell(cell.getDownCell()); 
 			return true;
 		}
 		if(m == Movement.LEFT && cell.getLeft() == CellComponents.APERTURE)
 		{
-			p.setCurrentCell(cell.getLeftCell()); //not correct, trying to figure out how to move player
+			p.setCurrentCell(cell.getLeftCell()); 
 			return true;
 		}
 		if(m == Movement.RIGHT && cell.getRight() == CellComponents.APERTURE)
 		{
-			p.setCurrentCell(cell.getRightCell()); //not correct, trying to figure out how to move player
+			p.setCurrentCell(cell.getRightCell()); 
 			return true;
 	   }
 		return false;
@@ -293,4 +293,4 @@ public class Game{
 //so we have to create a 3d array that represents the gameBoard
 //we should do this as random
 //the exit will always be on the top left corner
-//
+//create print grid!!!
