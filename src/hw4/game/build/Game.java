@@ -6,106 +6,109 @@ import hw4.maze.build.Row;
 import hw4.player.build.Movement;
 import hw4.player.build.Player;
 import hw4.simulation.build.Simulation;
-
 import java.util.Random;
 import java.util.ArrayList;
-
-
 public class Game{
 	
 	private Grid grid;
-	private Random rand = new Random(); 
-	private int size;
+	private Random rand = new Random();
 	private Simulation simulation;
-     
+	private int size;
+   
 	/**
 	 * creates a boolean that returns false if the player or movement is null
 	 * sets cell to the current cell the player is occupying
-	 * checks if the cell should move to the cell in the direction it is trying to go to 
+	 * checks if the cell should move to the cell in the direction it is trying to go to
 	 * @param movement m used to move the player
-	 * @param player p used as where the user is on the grid 
-	 * @return if the cell is null, false is returned 
-	 * @return if the cell is not null and hits a wall, set the player 
-	 * @return if the cell is not null and hits exit, set the player 
-	 * @return if the cell is not null and hits an apperture cell, set the player 
+	 * @param player p used as where the user is on the grid
+	 * @return if the cell is null, false is returned
+	 * @return if the cell is not null and hits a wall, set the player
+	 * @return if the cell is not null and hits exit, set the player
+	 * @return if the cell is not null and hits an apperture cell, set the player
 	 */
 	
-	public boolean play(Movement m, Player p) 
+	public boolean play(Movement m, Player p)
 	{
 		if(p == null || m == null)
 		{
 			return false;
 		}
-		Row userRow = grid.getRows().get(0);
-		Cell cell = userRow.getCells().get(0);
-	
+		int startingPosition = grid.getStartingPosition();
+		p.setCurrentCell(grid.getRows().get(startingPosition).getCells().get(startingPosition));
+		Cell cell = p.getCurrentCell();
+		
 		if(cell == null)
 		{
 			return false;
 		}
 		if((m == Movement.UP && cell.getUp() == CellComponents.WALL) || (m == Movement.DOWN && cell.getDown() == CellComponents.WALL) || (m == Movement.RIGHT && cell.getRight() == CellComponents.WALL) || (m == Movement.LEFT && cell.getLeft() == CellComponents.WALL))
 		{
-			p.setCurrentCell(cell); 
+			p.setCurrentCell(grid.getRows().get(startingPosition).getCells().get(startingPosition));
 			return true;
 		}
+		
 		if((m == Movement.UP && cell.getUp() == CellComponents.EXIT) || (m == Movement.DOWN && cell.getDown() == CellComponents.EXIT) || (m == Movement.RIGHT && cell.getRight() == CellComponents.EXIT) || (m == Movement.LEFT && cell.getLeft() == CellComponents.EXIT))
-		{   
-			p.setCurrentCell(cell); 
+		{  
+			System.out.println("game over");
 			return true;
 		}	
 		if((m == Movement.UP && cell.getUp() == CellComponents.APERTURE))
 		{
-			p.setCurrentCell(cell.getUpCell()); 
+			p.setCurrentCell(grid.getRows().get(startingPosition).getCells().get(startingPosition));
+			p.setCurrentCell(cell.getUpCell());
 			return true;
 		}
 		if((m == Movement.DOWN && cell.getDown() == CellComponents.APERTURE))
 		{
-			p.setCurrentCell(cell.getDownCell()); 
+			p.setCurrentCell(grid.getRows().get(startingPosition).getCells().get(startingPosition));
+			p.setCurrentCell(cell.getDownCell());
 			return true;
 		}
 		if((m == Movement.LEFT && cell.getLeft() == CellComponents.APERTURE))
 		{
-			p.setCurrentCell(cell.getLeftCell()); 
+			p.setCurrentCell(grid.getRows().get(startingPosition).getCells().get(startingPosition));
+			p.setCurrentCell(cell.getLeftCell());
 			return true;
 		}
 		if((m == Movement.RIGHT && cell.getRight() == CellComponents.APERTURE))
 		{
-			p.setCurrentCell(cell.getRightCell()); 
+			
+			p.setCurrentCell(grid.getRows().get(startingPosition).getCells().get(startingPosition));
+			p.setCurrentCell(cell.getRightCell());
 			return true;
 	   }
 		return false;
-    }  
-
+   } 
 	/**
 	 * Creates a game constructor based on the size of the grid by calling the parent object and implementing the size of the grid equal to the current instance of itself
-	 * @param the size of the grid 
+	 * @param the size of the grid
 	 */
-	public Game(int size) 
+	public Game(int size)
 	{
 		super();
 		this.size = size;
 	}
 	
 	/**
-	 * Creates a game constructor based on the grid by callinf the parent object and implementing grid equal to the current instance of itself
+	 * Creates a game constructor based on the grid by calling the parent object and implementing grid equal to the current instance of itself
 	 * @param grid
 	 */
-	public Game(Grid grid) 
+	public Game(Grid grid)
 	{
 		super();
 		this.grid = grid;
 	}
 	
 	/**
-	 * sets up the game by setting the current instance of grid to a random grid of ambiguous size 
+	 * sets up the game by setting the current instance of grid to a random grid of ambiguous size
 	 * @param the size of the grid
 	 */
 	public void setUpGame(int size)
 	{
-		this.grid = createRandomGrid(size); 
+		this.grid = createRandomGrid(size);
 	}
-     /**
-	 * gets the grid so that it can be used to play the game 
+    /**
+	 * gets the grid so that it can be used to play the game
 	 * @return returns a grid
 	 */
 	
@@ -122,7 +125,7 @@ public class Game{
 		this.grid = grid;
 	}
 	/**
-	 * This method creates a new grid of size size and is full of cells. Each cell in the grid has random components 
+	 * This method creates a new grid of size size and is full of cells. Each cell in the grid has random components
 	 * based on its location and are consistent with those around it. The grid has to be a size between 3x3 and 7x7.
 	 * @param size is the desired size of the grid (Between 3x3 and 7x7).
 	 * @return This method returns a new grid if it meets the size requirement and if not, returns null.
@@ -140,6 +143,7 @@ public class Game{
 			
 			//Set cell neighbors
 			setCellNeighbors(grid, size);
+			grid.setSize(size);
 			return grid;
 		}
 		return null;
@@ -196,7 +200,7 @@ public class Game{
 	}
 	
 	/**
-	 * This method creates a random cell, setting it depending on its location in the grid 
+	 * This method creates a random cell, setting it depending on its location in the grid
 	 * (e.g if a cell is in the top right corner, its left component will be an EXIT,
 	 * its top component will be a WALL, and the other two will be random).
 	 * @param location is an integer indicating the cell's position in the grid:
@@ -286,7 +290,7 @@ public class Game{
 	/**
 	 * This method makes sure the grid is well connected and consistent. It checks which direction each cell shares borders
 	 * in and sets those bordering cells as its neighbors. If a cell doesn't border another on a side, its neighbor in that
-	 * direction will be set to null. The cell components on these shared borders will also be synchronized, creating a 
+	 * direction will be set to null. The cell components on these shared borders will also be synchronized, creating a
 	 * consistent grid.
 	 * @param grid is the grid in which neighbors should be set
 	 * @param size is the length of the rows/columns
@@ -321,9 +325,9 @@ public class Game{
 	}
 	/**
 	 * This method synchronizes the components on two of the borders of the current cell to make sure they are consistent.
-	 * It does this by checking if the cells above or to the left of the current exist. If they do, it sets 
-	 * current's components to that of its neighbor. 
-	 * @param current is the current cell 
+	 * It does this by checking if the cells above or to the left of the current exist. If they do, it sets
+	 * current's components to that of its neighbor.
+	 * @param current is the current cell
 	 * @param up is the cell directly above the current cell
 	 * @param left is the cell directly to the left of the current cell
 	 */
@@ -340,9 +344,11 @@ public class Game{
 	 */
 	
 	@Override
-	public String toString() 
+	public String toString()
 	{
 		return "Game [grid=" + grid + "]";
 	}
-
 }
+
+
+
