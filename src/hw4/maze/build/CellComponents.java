@@ -23,4 +23,3 @@ public enum CellComponents{
         return cellComponents[RANDOM.nextInt(2)];
     }
   }
-	
